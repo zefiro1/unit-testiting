@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ItemController {
   @Autowired
@@ -20,6 +22,11 @@ public class ItemController {
   public Item itemFromBusinessService() {
     Item item = businessService.retriveHardcodedItem();
     return item;
+  }
+
+  @GetMapping("/all-items-from-database")
+  public List<Item> retriveAllItems(){
+    return businessService.retriveAllItems();
   }
 
 }

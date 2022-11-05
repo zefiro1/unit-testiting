@@ -1,10 +1,22 @@
 package com.basicrestservice.basicrestservice.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Item {
+  @Id
   private int id;
   private String name;
   private int price;
   private int quantity;
+  @Transient
+  private int value;
+
+  protected Item(){
+
+  }
   public Item(int id, String name, int price, int quantity) {
     setId(id);
     setName(name);
@@ -44,8 +56,16 @@ public class Item {
     this.quantity = quantity;
   }
 
+  public void setValue(int value) {
+    this.value = value;
+  }
+
+  public int getValue() {
+    return value;
+  }
+
   @Override
   public String toString() {
-    return String.format("Item[%d, %s, %d, %d]",id,name,price,quantity);
+    return String.format("Item[%d, %s, %d, %d]", id, name, price, quantity);
   }
 }
